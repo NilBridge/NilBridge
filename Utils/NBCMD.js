@@ -89,7 +89,6 @@ function Parser(raw){
         }
     }
     if(stringItem != "")cmds.push(stringItem);
-    console.log(cmds);
     return cmds;
 }
 

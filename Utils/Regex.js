@@ -76,7 +76,9 @@ function format(str,member,e){
 }
 
 function Regex(e){
+
     const raw = NIL.TOOL.GetPlainText(e);
+    if(e.group_id != NIL.CONFIG.GROUP_MAIN)return;
     regexs.forEach(re => {
         if(NIL.CONFIG.ADMIN.indexOf(e.sender.user_id) ==-1 && re.permission == 1)return;
         re.out.forEach(it=>{
