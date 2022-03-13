@@ -74,12 +74,15 @@ function ws_onpack_item(ser,str){
             NIL.bot.sendMainMessage(NIL.LANG.get("WSPACK_RECEIVE_ERROR",ser,pack.params.msg));
             break;
         case "chat":
+            if(NIL.CONFIG.QQ_CHAT_SERVER==false)return;
             send2Other(ser,'chat',pack.params.sender,pack.params.text);
             NIL.bot.sendChatMessage(NIL.LANG.get('MEMBER_CHAT',ser,pack.params.sender,pack.params.text));
             break;
         case "left":
             send2Other(ser,'left',pack.params.sender,'','');
-            NIL.bot.sendChatMessage(NIL.LANG.get('MEMBER_LEFT',ser,pack.params.sender));
+            if(NIL.CONFIG.QQ_CHAT_SERVER){
+                NIL.bot.sendChatMessage(NIL.LANG.get('MEMBER_LEFT',ser,pack.params.sender));
+            }
             NIL.SERVERS[ser].removeOnline(pack.params.sender);
             if(time[pack.params.sender]!=undefined){
                NIL.XDB.add_time(pack.params.sender,'time', Math.ceil((new Date() - time[pack.params.sender])/60*1000));
@@ -90,7 +93,9 @@ function ws_onpack_item(ser,str){
             var t = 0;
             if(NIL.XDB.xboxid_exsits(pack.params.sender)) t = NIL.XDB.get_player(NIL.XDB.get_qq(pack.params.sender)).count.join;
             send2Other(ser,'join',pack.params.sender,'','');
-            NIL.bot.sendChatMessage(NIL.LANG.get('MEMBER_JOIN',ser,pack.params.sender,(t+1).toString()));
+            if(NIL.CONFIG.QQ_CHAT_SERVER){
+                NIL.bot.sendChatMessage(NIL.LANG.get('MEMBER_JOIN',ser,pack.params.sender,(t+1).toString()));
+            }
             NIL.XDB.add_time(pack.params.sender,'join',1);
             time[pack.params.sender] = new Date();
             NIL.SERVERS[ser].addOnline(pack.params.sender);

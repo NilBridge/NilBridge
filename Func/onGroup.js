@@ -121,8 +121,10 @@ function group_chat(e){
     //NIL.Logger.debug(NIL.TOOL.GetFormatText(e));
     helper.sendTextAll(NIL.LANG.get('GROUP_MEMBER_CHAT',NIL.XDB.wl_exsits(e.sender.user_id)?NIL.XDB.get_xboxid(e.sender.user_id):e.sender.nickname,NIL.TOOL.GetFormatText(e)));
 }
+if(NIL.CONFIG.QQ_CHAT_SERVER){
+    NIL.FUNC.NATIVE.GROUP.push(group_chat);
+}
 
-NIL.FUNC.NATIVE.GROUP.push(group_chat);
 NIL.FUNC.NATIVE.GROUP.push(group_main);
 /*
 {

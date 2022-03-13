@@ -63,3 +63,12 @@ NIL.CONFIG.GROUP_MAIN = 1020160254
 // 用来与服务器聊天
 // 与主群可以是同一个
 NIL.CONFIG.GROUP_CHAT = 1020160254
+
+
+// 是否在群员绑定xboxid后修改群昵称
+// 默认开启
+NIL.CONFIG.AUTO_RENAME_AFTER_BIND = true
+
+
+// 是否开启聊天转发
+NIL.CONFIG.QQ_CHAT_SERVER = true

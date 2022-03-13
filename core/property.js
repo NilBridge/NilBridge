@@ -66,3 +66,6 @@ NIL.CONFIG.GROUP_CHAT = 123456789
 // 是否在群员绑定xboxid后修改群昵称
 // 默认开启
 NIL.CONFIG.AUTO_RENAME_AFTER_BIND = true
+
+// 是否开启聊天转发
+NIL.CONFIG.QQ_CHAT_SERVER = true
